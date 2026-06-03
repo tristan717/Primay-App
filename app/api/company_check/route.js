@@ -16,11 +16,13 @@ export async function POST(req){
 
         const { data: userData, error:errorUser } = await db
         .from("users")
-        .select("user_id,  f_name, l_name, role, position, department")
+        .select("user_id, f_name, l_name, role, position, department")
         .eq("clerk_user_id", userId)
-        .maybeSingle();
 
-        if(!userData.user_id){
+
+        if(!userData){
+            console.log("userData: ", userData)
+            console.log("error: ", errorUser)
             return NextResponse.json({ code: 500, success: false, message: "Unauthenticated User." });
         }
 

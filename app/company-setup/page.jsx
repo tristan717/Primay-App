@@ -7,6 +7,7 @@ import { OrganizationForm } from "@/components/OrganizationForm";
 export default async function CompanySetupPage() {
   const verified = await checkUser();
 
+  console.log("verified: ", verified)
   if (!verified.success || !verified.data) {
     return NotFound();
   }
@@ -16,10 +17,12 @@ export default async function CompanySetupPage() {
   }
 
   const organization = await getOrganization();
+
+  console.log("organization: ", organization)
   
   if(organization.code === 200 && organization.success===true){
     if (organization.data) {
-      redirect("/sysadmin");
+      redirect("/sysadmin/myOrg");
     }
 
   }

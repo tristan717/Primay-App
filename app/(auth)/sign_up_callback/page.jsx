@@ -23,10 +23,18 @@ export default function SignUpCallback(){
 
                 const response = await AxiosInstance.post("/company_check", { userId });
                 console.log("response: ", response)
-                if(response.data.success === true){
-                    router.push("/sysadmin/actLogs");
-                } else {
-                    router.push("/company-setup");
+                if(response) {
+                    if(response.data){
+                        const res = response.data;
+                        if(res.code === 401 && res.success === false){
+                            console.log("res: ", res)
+                            console.log("going to company setup")
+                            router.push("/company-setup");
+                        }
+                        if(res.success === true && res.code === 200){
+                            router.push("/sysadmin/myOrg");
+                        }
+                    }
                 }
             } catch (error) {
                 console.error("Error company validate: ", error);
