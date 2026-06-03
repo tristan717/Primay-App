@@ -14,6 +14,10 @@ export async function POST(req){
     .eq("clerk_user_id", userId)
     .single()
 
+    if(errFetch){
+      console.log("error route: ", errFetch)
+      return NextResponse.json({code: 500, success: false, message: "Failed Request." })
+    }
     if(!userData.user_id){
         return NextResponse.json({ code: 500, success: false, message: "Unauthenticated User." });
     }
@@ -21,21 +25,19 @@ export async function POST(req){
     if(userData.role !== "SYSADMIN"){
       return NextResponse.json({code: 500, success: false, message: "You are not allowed to do this action" })
     }
-    if(errFetch){
-      return NextResponse.json({code: 500, success: false, message: "Failed Request." })
-    }
 
     const {data: companyVerify, error:errFetchCopmany} = await db
     .from("organization")
     .select("company_id", {count: "exact", head: true})
-    .eq("company_name", data.copmany_name)
+    .eq("company_name", data.company_name)
     .eq("email_company", data.email_company)
 
     if(companyVerify){
       return NextResponse.json({code: 500, success:true, message:"Company already exist"})
     }
 
-    if(errFetchCopmany){      
+    if(errFetchCopmany){
+      console.log("error route: ", errFetchCopmany)      
       return NextResponse.json({code: 500, success:true, message:"Error verifying"})
     }
 
@@ -51,8 +53,9 @@ export async function POST(req){
       "industry": data.industry,
       "user_id": userData.user_id,
     })
-    .single()
+    .select()
 
+    console.log("created a company")
     if(createCompany){
       return NextResponse.json({code: 200, success: true, message:"Successfully created!"})
     }

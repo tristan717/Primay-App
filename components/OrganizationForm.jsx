@@ -21,6 +21,7 @@ export function OrganizationForm({ organization, mode = "setup" }) {
       setROnly(true)
     }
   },[setROnly])
+
   async function handleSubmit(event) {
     event.preventDefault();
     setMessage("");
@@ -37,15 +38,15 @@ export function OrganizationForm({ organization, mode = "setup" }) {
       setIsSaving(false);
     }
 
-    const result = await response.json();
+    const result = response.data;
 
-    if (!response.ok || !result.success) {
+    if (!result.success) {
       setMessage(result.message ?? "Unable to save organization details.");
       return;
     }
 
     router.refresh();
-    router.push("/sysadmin");
+    router.push("/sysadmin/myOrg");
   }
 
   return (
