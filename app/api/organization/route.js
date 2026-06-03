@@ -43,7 +43,7 @@ export async function POST(req){
 
     console.log("backend payload: ", data, " ", userData.user_id, " clerk: ", userData.clerk_user_id)
     const {data: createCompany, error: errorCreate } = await db
-    .from("organization")
+    .from("organization") 
     .insert({
       "company_name": data.company_name,
       "company_details": data.company_details,
