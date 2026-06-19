@@ -218,6 +218,12 @@ Step 2: Install Dependencies
 npm install
 
 Step 3: Configure Environment Variables
+
+add a period in front of the file name of env file
+that is already in the repo.
+
+If you want to recreate the database, auth, and AI dependencies
+on your own here are the steps: 
 # Clerk Authentication
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
@@ -237,7 +243,6 @@ NEXT_PUBLIC_API_URL=/api
 How to get these keys:
 
 Clerk Keys
-
 Go to clerk.com
 Create project or sign in
 Go to API Keys
