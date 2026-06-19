@@ -255,7 +255,7 @@ npm run dev
 
 Step 5: Create Organization (First Login)
 Sign up with Clerk
-You&rsquo;ll be created as a SYSADMIN
+You will be created as a SYSADMIN
 Complete organization setup form
 Add team members and assign roles
 Users can now log in
@@ -335,7 +335,7 @@ Supports compliance and security audits
 
 AI Integration Details
 Decision Support Feature
-The Decision Support component uses Google&rsquo;s Generative AI (Gemini) to provide intelligent workload analysis:
+The Decision Support component uses Generative AI (Gemini) of Google to provide intelligent workload analysis:
 
 Trigger: Admin clicks "Generate AI Insights" in employee detail view
 Data Sent: Employee profile, assigned tasks, and workload metrics
