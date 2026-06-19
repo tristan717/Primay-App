@@ -198,6 +198,14 @@ My Documentation:
   - [Clerk](https://clerk.com) - Authentication
   - [Supabase](https://supabase.com) - Database
   - [Google AI Studio](https://ai.google.dev) - Gemini API (optional feature)
+- RLS is strict, run these Bypass commands at the SQL Editor of Supabase:
+GRANT SELECT ON public.documents TO anon
+GRANT SELECT ON public.document_shares TO anon
+GRANT SELECT ON public.document_attachments TO anon
+GRANT INSERT ON public.documents TO anon
+GRANT UPDATE ON public.documents TO anon
+GRANT INSERT, UPDATE ON public.document_shares TO anon
+GRANT SELECT ON public.app_users TO anon
 
 ### Step 1: Clone Repository
 
@@ -234,14 +242,14 @@ Go to clerk.com
 Create project or sign in
 Go to API Keys
 Copy "Publishable Key" and "Secret Key"
-Supabase Keys
 
+Supabase Keys
 Go to supabase.com
 Create project or sign in
 Go to Project Settings → API
 Copy "Project URL", "Anon Key", and "Service Role Key"
-Gemini API Key
 
+Gemini API Key
 Go to ai.google.dev
 Click "Get API Key"
 Create new API key in Google Cloud Console
