@@ -197,7 +197,7 @@ My Documentation:
 - Accounts for:
   - [Clerk](https://clerk.com) - Authentication
   - [Supabase](https://supabase.com) - Database
-  - [Google AI Studio](https://ai.google.dev) - Gemini API
+  - [Google AI Studio](https://ai.google.dev) - Gemini API (optional feature)
 
 ### Step 1: Clone Repository
 
